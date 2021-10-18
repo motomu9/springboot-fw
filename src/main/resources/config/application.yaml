@@ -1,0 +1,5 @@
+foo:
+  data: Test
+  names:
+    - test1
+    - test2
