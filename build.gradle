@@ -4,7 +4,6 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'idea'
     id 'eclipse'
-    id 'groovy'
 }
 
 group 'org.example'
@@ -20,7 +19,7 @@ configurations {
     runtimeClasspath {
         extendsFrom developmentOnly
     }
-    all*.exclude group: 'org.springframework.boot',module:'spring-boot-starter-logging'
+    all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
 }
 
 dependencies {
@@ -28,6 +27,8 @@ dependencies {
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-log4j2
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.5.5'
     // https://mvnrepository.com/artifact/com.opencsv/opencsv
     implementation group: 'com.opencsv', name: 'opencsv', version: '5.5.2'
 
@@ -38,10 +39,17 @@ dependencies {
     compileClasspath group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '2.5.5'
     annotationProcessor group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '2.5.5'
 
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools
+    developmentOnly group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '2.5.5'
+
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
 
 test {
     useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
 }

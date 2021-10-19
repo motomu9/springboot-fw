@@ -1,3 +1,13 @@
+spring:
+  profiles:
+    default: dev
+    active: dev
+  message:
+    basename: message,ValidationMessages,PropertyNames
+    chash-duration: -1
+    encoding: UTF-8
+  thymeleaf:
+    mode: HTML
 foo:
   data: Test
   names:
